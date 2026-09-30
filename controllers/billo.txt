@@ -1,0 +1,17 @@
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        const {name, url} = req.body;
+        const newWebsite = new Website({
+            name,
+            url,
+            apiKey: generateApiKey(),
+        });
+        await newWebsite.save();
+        res.status(201).json(newWebsite);
+    } catch (error) {
+        console.error('Error registering website:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
