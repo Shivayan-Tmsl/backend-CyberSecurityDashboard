@@ -7,7 +7,7 @@ export const initialize = (server) => {
 
     io = new Server(server, {
         cors: {
-            origin: "https://frontend-cyber-security-dashboard-eight.vercel.app/",
+            origin: "https://frontend-cyber-security-dashboard-eight.vercel.app",
         }
     });
 
